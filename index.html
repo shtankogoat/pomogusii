@@ -413,7 +413,8 @@ html.pg-cursor-on,html.pg-cursor-on *{cursor:none!important}
   .pg-hero__panel{padding-top:28px}
   .pg-hero__grid{grid-template-columns:1fr;gap:28px;margin-top:0}
   .pg-hero__photo{position:relative;top:auto;bottom:auto;left:auto;transform:none;order:-1;width:auto;height:min(92vw,520px);margin:0 -24px -40px;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent)}
-  .pg-hero__photo img{object-position:66% 0}
+  .pg-hero__photo{overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent),radial-gradient(ellipse 230px 100% at 50% 50%,#000 60%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent),radial-gradient(ellipse 230px 100% at 50% 50%,#000 60%,transparent 100%);mask-composite:intersect}
+  .pg-hero__photo img{position:absolute;top:0;left:50%;width:auto;max-width:none;height:100%;transform:translateX(-66.1%)}
   .pg-hero__author{display:block;order:-1;justify-self:center;margin:-20px 0 0}
   .pg-hero__right{grid-column:auto}
   .pg-hero__btns{max-width:none}
