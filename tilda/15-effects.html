@@ -1,0 +1,98 @@
+<!--
+  ПОМОГУСИИ · ЭФФЕКТЫ: курсор-круг, анимации появления, счётчики, FAQ (открыт только один вопрос).
+  Ставится ПОСЛЕДНИМ блоком страницы. Редактировать здесь ничего не нужно.
+  Если удалить этот блок — сайт продолжит работать, просто без анимаций.
+-->
+<div class="pg-cursor" aria-hidden="true"><i></i></div>
+
+<script>
+(function () {
+  if (window.__pgEffects) return;
+  window.__pgEffects = true;
+
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var mouse = { on: false };
+
+  // курсор переносим в <body>, чтобы обёртки Tilda не влияли на позиционирование
+  var cursor = document.querySelector('.pg-cursor');
+  document.body.appendChild(cursor);
+
+  /* ---------- FAQ: открыт только один вопрос ---------- */
+  document.querySelectorAll('.pg-faq').forEach(function (list) {
+    list.addEventListener('toggle', function (e) {
+      if (!e.target.open) return;
+      list.querySelectorAll('details[open]').forEach(function (d) {
+        if (d !== e.target) d.open = false;
+      });
+    }, true);
+  });
+
+  /* ---------- курсор-круг ---------- */
+  if (finePointer) {
+    document.addEventListener('mousemove', function (e) {
+      if (!mouse.on) { mouse.on = true; root.classList.add('pg-cursor-on'); }
+      cursor.style.opacity = '';
+      cursor.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+    });
+    // над формой оплаты (iframe) события мыши не доходят до страницы — прячем круг, там обычный курсор
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.tagName === 'IFRAME') cursor.style.opacity = 0;
+    });
+    document.documentElement.addEventListener('mouseleave', function () {
+      mouse.on = false; cursor.style.opacity = 0;
+    });
+    document.documentElement.addEventListener('mouseenter', function () {
+      cursor.style.opacity = '';
+    });
+  }
+
+  /* ---------- подсветка карточек под мышью ---------- */
+  document.addEventListener('pointermove', function (e) {
+    var card = e.target.closest && e.target.closest('.pg-card');
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  /* ---------- появление блоков при прокрутке ---------- */
+  var revealSel = '.pg-head, .pg-card, .pg-course__left > *, .pg-author__photo, .pg-author__text > *, .pg-quote, .pg-center, .pg-channel__text > *, .pg-channel img';
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(revealSel).forEach(function (el) {
+    if (el.closest('.pg-hero, .pg-header') || el.closest('.pg-rv')) return;
+    var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.matches(revealSel); });
+    el.style.setProperty('--d', Math.min(sibs.indexOf(el) * 0.08, 0.5) + 's');
+    el.classList.add('pg-rv');
+    io.observe(el);
+  });
+
+  /* ---------- счётчики цифр (40+, 21 тыс., 62 миллиона…) ---------- */
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      cio.unobserve(en.target);
+      var node = en.target.firstChild, m = node.nodeValue.match(/^(\s*)(\d+)([\s\S]*)$/);
+      var end = +m[2], start = performance.now(), dur = 1600;
+      (function tick(now) {
+        var k = Math.min((now - start) / dur, 1);
+        node.nodeValue = m[1] + Math.round(end * (1 - Math.pow(1 - k, 3))) + m[3];
+        if (k < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.pg-num, .pg-stat__num').forEach(function (el) {
+    var node = el.firstChild;
+    if (node && node.nodeType === 3 && /^\s*[1-9]\d*/.test(node.nodeValue)) cio.observe(el);
+  });
+})();
+</script>

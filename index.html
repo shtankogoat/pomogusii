@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ПомогусИИ — клуб по нейросетям Льва Кудрина</title>
+<meta name="description" content="Стань Нейрокреатором — это проще, чем кажется! Закрытый клуб по нейросетям: 40+ практических уроков, ИИ-мультфильмы, фото, видео, озвучка и монетизация.">
+<style>body{margin:0;background:#0b0705}</style>
+</head>
+<body>
+
+<!-- ===== 00-styles.html ===== -->
+<!--
+  ПОМОГУСИИ · ОБЩИЕ СТИЛИ
+  Этот блок должен стоять ПЕРВЫМ на странице. Не удаляйте его — без него остальные блоки потеряют оформление.
+  Цвета сайта меняются в разделе :root ниже (например, --pg-gold — основной золотой).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pg-bg:#140d08;
+  --pg-bg-2:#130b06;
+  --pg-text:#f6ecdc;
+  --pg-muted:#bda88a;
+  --pg-gold:#e9b65c;
+  --pg-gold-2:#f6d590;
+  --pg-line:rgba(233,182,92,.22);
+  --pg-line-2:rgba(233,182,92,.4);
+  --pg-radius:22px;
+  --pg-grad:linear-gradient(180deg,#fff4d6 0%,#f5d088 34%,#d9a043 66%,#8c5719 100%);
+  --pg-btn:linear-gradient(180deg,#ffe6a8 0%,#f2c066 48%,#cc8d34 100%);
+}
+html{scroll-behavior:smooth}
+body,.t-body{background-color:var(--pg-bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23e9b65c' stroke-opacity='.07'%3E%3Cpath d='M24 0L48 24L24 48L0 24Z'/%3E%3Cpath d='M24 12L36 24L24 36L12 24Z' stroke-width='.6'/%3E%3C/g%3E%3Ccircle cx='24' cy='24' r='1.6' fill='%23e9b65c' fill-opacity='.12'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E"),radial-gradient(ellipse 90% 60% at 50% 0%,rgba(214,140,50,.1),transparent 70%);background-size:48px 48px,160px 160px,100% 100%;background-attachment:fixed}
+
+/* ---------- база ---------- */
+.pg,.pg *{box-sizing:border-box}
+.pg{position:relative;z-index:1;overflow:hidden;background:transparent;color:var(--pg-text);font-family:'Roboto',Arial,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+:where(.pg) :where(h1,h2,h3,h4,p,ul){margin:0;padding:0}
+:where(.pg) ul{list-style:none}
+:where(.pg) a{color:inherit;text-decoration:none}
+:where(.pg) img{display:block;max-width:100%}
+.pg b,.pg strong{font-weight:700;color:var(--pg-gold-2)}
+.pg svg{flex-shrink:0}
+.pg-wrap{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 24px}
+.pg-section{padding:110px 0}
+.pg-glow:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 32% at 50% 38%,rgba(233,160,70,.12),transparent 100%)}
+
+.pg-gold{background:var(--pg-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pg-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--pg-gold-2)}
+.pg-eyebrow--lines:before,.pg-eyebrow--lines:after{content:"";width:72px;height:1px;background:linear-gradient(90deg,transparent,var(--pg-gold))}
+.pg-eyebrow--lines:after{transform:scaleX(-1)}
+.pg-title{font-family:'Roboto',Arial,sans-serif;font-weight:900;font-size:clamp(32px,4.4vw,56px);line-height:1.1;letter-spacing:-.01em}
+.pg-lead{font-size:18px;color:var(--pg-muted);max-width:640px}
+.pg-head{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;margin-bottom:56px}
+.pg-hand{font-family:'Caveat',cursive;font-weight:500;color:var(--pg-gold);font-size:28px;line-height:1.05}
+
+/* ---------- кнопки ---------- */
+.pg-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:60px;padding:8px 8px 8px 30px;border-radius:16px;font-weight:700;font-size:17px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.pg-btn:hover{transform:translateY(-2px)}
+.pg-btn i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;font-style:normal}
+.pg-btn i svg{width:20px;height:20px}
+.pg-btn--gold{background:var(--pg-btn);color:#1d1006;box-shadow:0 10px 40px -10px rgba(240,180,80,.65),inset 0 1px 0 rgba(255,255,255,.6)}
+.pg-btn--gold:hover{box-shadow:0 16px 50px -10px rgba(240,180,80,.85),inset 0 1px 0 rgba(255,255,255,.6)}
+.pg-btn--gold i{background:#1d1006;color:var(--pg-gold-2)}
+.pg-btn--ghost{background:rgba(255,220,160,.04);border:1px solid var(--pg-line-2);color:var(--pg-text);font-weight:600}
+.pg-btn--ghost:hover{background:rgba(255,220,160,.09)}
+.pg-btn--ghost i{border:1px solid var(--pg-line-2);color:var(--pg-gold-2);width:38px;height:38px}
+.pg-btn--sm{min-height:46px;padding:6px 6px 6px 20px;font-size:15px;border-radius:13px;gap:14px}
+.pg-btn--sm i{width:34px;height:34px}
+.pg-btn--sm i svg{width:16px;height:16px}
+
+/* ---------- карточки и иконки ---------- */
+.pg-card{position:relative;background:linear-gradient(180deg,rgba(255,214,150,.075),rgba(255,214,150,.02));border:1px solid var(--pg-line);border-radius:var(--pg-radius);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.pg-ico{display:grid;place-items:center;width:54px;height:54px;border-radius:15px;border:1px solid var(--pg-line-2);background:radial-gradient(circle at 30% 20%,rgba(246,213,144,.22),rgba(233,182,92,.04));color:var(--pg-gold-2)}
+.pg-ico svg{width:26px;height:26px}
+.pg-num{font-family:'Roboto',Arial,sans-serif;font-weight:900}
+.pg-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;border:1px solid var(--pg-line-2);background:rgba(233,182,92,.08);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pg-gold-2)}
+.pg-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pg-gold);box-shadow:0 0 10px var(--pg-gold);animation:pgPulse 1.6s infinite}
+@keyframes pgPulse{50%{opacity:.35}}
+
+/* ---------- шапка ---------- */
+.pg-header{position:fixed;top:0;left:0;right:0;z-index:999;overflow:visible;background:rgba(11,7,5,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid rgba(233,182,92,.12)}
+.pg-header .pg-wrap{display:flex;align-items:center;gap:32px;height:76px}
+.pg-logo{display:flex;align-items:center;gap:14px}
+.pg-logo__name{font-family:'Roboto',Arial,sans-serif;font-weight:900;font-size:24px;letter-spacing:.02em}
+.pg-logo__sub{font-size:12px;line-height:1.3;color:var(--pg-muted);padding-left:14px;border-left:1px solid var(--pg-line-2)}
+.pg-nav{display:flex;gap:28px;margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.pg-nav a{opacity:.85;transition:color .2s,opacity .2s}
+.pg-nav a:hover{opacity:1;color:var(--pg-gold-2)}
+.pg-burger,.pg-burger-toggle{display:none}
+.pg-header-space{height:76px}
+
+/* ---------- первый экран ---------- */
+.pg-hero{padding:0}
+.pg-hero__inner{position:static;text-align:center}
+.pg-hero__title{position:relative;z-index:3;display:inline-block;margin-top:14px;font-family:'Roboto',Arial,sans-serif;font-weight:900;font-size:clamp(36px,11.4vw,164px);line-height:.95;letter-spacing:-.005em;filter:drop-shadow(0 6px 30px rgba(240,170,70,.35))}
+.pg-hero__star{position:absolute;right:-.42em;bottom:-.06em;width:.42em;height:.42em;color:#ffe2a0;filter:drop-shadow(0 0 18px #ffcf7a)}
+.pg-hero__grid{display:grid;grid-template-columns:380px 1fr 400px;gap:24px;align-items:start;margin-top:26px;text-align:left}
+.pg-hero__photo{position:absolute;z-index:1;top:250px;left:calc(50% - 503px);width:760px;height:433px;-webkit-mask-image:radial-gradient(ellipse 34% 62% at 64% 46%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 34% 62% at 64% 46%,#000 62%,transparent 100%)}
+.pg-hero__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.pg-hero__left,.pg-hero__right{position:relative;z-index:3;display:flex;flex-direction:column;gap:22px}
+.pg-hero__right{grid-column:3}
+.pg-hero__lead{font-size:20px;line-height:1.45}
+.pg-hero__sub{font-size:17px;font-weight:700}
+.pg-hero__btns{display:flex;flex-direction:column;gap:14px;max-width:310px;margin-top:6px}
+.pg-hero__author{display:none;position:relative;z-index:3;align-self:end;justify-self:center;text-align:center;margin-bottom:14px;padding:10px 20px;border-radius:14px;background:rgba(11,7,5,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--pg-line)}
+.pg-hero__author b{display:block;font-size:17px}
+.pg-hero__author span{font-size:13px;color:var(--pg-muted)}
+.pg-hero__stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pg-stat{padding:18px;display:flex;flex-direction:column;gap:10px}
+.pg-stat__top{display:flex;align-items:center;gap:12px}
+.pg-stat__top svg{width:34px;height:34px;color:var(--pg-gold-2)}
+.pg-stat__num{font-size:24px;font-weight:800;line-height:1.05}
+.pg-stat__num small{display:block;font-size:16px;font-weight:700}
+.pg-stat p{font-size:12.5px;line-height:1.45;color:var(--pg-muted)}
+.pg-hero__right .pg-eyebrow{font-size:11px;letter-spacing:.24em;justify-content:center}
+.pg-tools{display:flex;justify-content:center;gap:10px}
+.pg-tools span{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;border:1px solid var(--pg-line-2);background:linear-gradient(180deg,rgba(255,214,150,.12),rgba(255,214,150,.03));color:var(--pg-gold-2)}
+.pg-tools svg{width:24px;height:24px}
+.pg-tools__cap{text-align:center;font-size:13px;color:var(--pg-muted);margin-top:-8px}
+.pg-hero__note{position:absolute;z-index:3;font-size:23px;opacity:.6}
+.pg-hero__note svg{display:block;width:46px;height:40px;margin-top:4px}
+.pg-hero__note--l{left:max(2vw,calc(50% - 680px));top:96px;transform:rotate(-12deg)}
+.pg-hero__note--r{right:max(2vw,calc(50% - 690px));top:20px;transform:rotate(-10deg);text-align:right}
+.pg-hero__note--r svg{margin-left:auto;transform:scaleX(-1)}
+
+/* ---------- что это приносит ---------- */
+.pg-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pg-benefit{padding:34px 30px;display:flex;flex-direction:column;gap:20px;overflow:hidden}
+.pg-benefit .pg-num{position:absolute;right:22px;top:12px;font-size:72px;line-height:1;opacity:.14}
+.pg-benefit h3{font-size:21px;font-weight:700;line-height:1.3}
+.pg-benefit p{color:var(--pg-muted);font-size:15px}
+
+/* ---------- курс по мультфильмам ---------- */
+.pg-course{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:center}
+.pg-course__left{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.pg-course__big{display:flex;align-items:flex-end;gap:18px}
+.pg-course__big .pg-num{font-size:150px;line-height:.8}
+.pg-course__big span{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;line-height:1.4;padding-bottom:6px}
+.pg-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pg-step{padding:22px 18px;display:flex;flex-direction:column;gap:14px}
+.pg-step small{position:absolute;top:16px;right:18px;font-size:12px;font-weight:700;color:var(--pg-gold);opacity:.7}
+.pg-step h4{font-size:16px;font-weight:700}
+.pg-step .pg-ico{width:46px;height:46px;border-radius:13px}
+.pg-step .pg-ico svg{width:22px;height:22px}
+
+/* ---------- результаты ---------- */
+.pg-results{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:22px}
+.pg-case{padding:30px;display:flex;flex-direction:column;gap:22px}
+.pg-case__tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pg-muted)}
+.pg-case__row{display:flex;flex-direction:column;gap:4px}
+.pg-case__row .pg-num{font-size:44px;line-height:1}
+.pg-case__row span{color:var(--pg-muted);font-size:15px}
+.pg-case--total{background:radial-gradient(ellipse at 30% 0%,rgba(246,200,120,.28),transparent 70%),linear-gradient(180deg,rgba(255,214,150,.12),rgba(255,214,150,.03));border-color:var(--pg-line-2)}
+.pg-case--total .pg-num{font-size:56px}
+.pg-cta-line{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:22px;padding:30px 36px}
+.pg-cta-line h3{font-family:'Roboto',Arial,sans-serif;font-size:28px;font-weight:700;line-height:1.2}
+.pg-cta-line p{color:var(--pg-muted);margin-top:6px}
+
+/* ---------- навыки ---------- */
+.pg-skills{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pg-skill{padding:30px 26px;display:flex;flex-direction:column;gap:18px}
+.pg-skill .pg-num{font-size:46px;line-height:1}
+.pg-skill p{font-size:17px;font-weight:600;line-height:1.4}
+.pg-quote{margin-top:44px;text-align:center;font-family:'Roboto',Arial,sans-serif;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.3}
+
+/* ---------- для кого ---------- */
+.pg-aud{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pg-aud .pg-card{padding:28px;display:flex;gap:20px;align-items:flex-start}
+.pg-aud p{font-size:16.5px;line-height:1.5}
+
+/* ---------- программа клуба ---------- */
+.pg-club{display:grid;grid-template-columns:.9fr 1.4fr;gap:22px}
+.pg-club__main{padding:40px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;background:radial-gradient(ellipse at 20% 0%,rgba(246,200,120,.3),transparent 70%),linear-gradient(180deg,rgba(255,214,150,.12),rgba(255,214,150,.03));border-color:var(--pg-line-2)}
+.pg-club__main .pg-num{font-size:120px;line-height:.85}
+.pg-club__main h3{font-size:26px;font-weight:700;line-height:1.25}
+.pg-club__main p{color:var(--pg-muted);margin-top:10px}
+.pg-club__list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pg-club__list .pg-card{padding:22px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:16px;line-height:1.35}
+.pg-club__list .pg-ico{width:46px;height:46px;border-radius:13px}
+.pg-club__list .pg-ico svg{width:22px;height:22px}
+.pg-center{display:flex;justify-content:center;margin-top:44px}
+
+/* ---------- бегущая строка ---------- */
+.pg-marquee{padding:26px 0;border-top:1px solid var(--pg-line);border-bottom:1px solid var(--pg-line);background:linear-gradient(90deg,#1a0f07,#2a190b,#1a0f07)}
+.pg-marquee__track{display:flex;width:max-content;animation:pgMarquee 40s linear infinite}
+.pg-marquee__track>span{padding-right:40px;white-space:nowrap;font-family:'Roboto',Arial,sans-serif;font-size:30px;font-weight:600}
+.pg-marquee__track em{font-style:normal;color:var(--pg-gold);padding:0 18px}
+@keyframes pgMarquee{to{transform:translateX(-50%)}}
+
+/* ---------- об авторе ---------- */
+.pg-author{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+.pg-author__photo{position:relative;border-radius:28px;padding:10px;background:linear-gradient(160deg,rgba(246,213,144,.5),rgba(233,182,92,.05) 40%,rgba(233,182,92,.35))}
+.pg-author__photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:20px;filter:sepia(.25) saturate(1.05)}
+.pg-author__exp{position:absolute;right:-26px;bottom:40px;padding:18px 22px;text-align:center;background:rgba(20,12,6,.88)}
+.pg-author__exp .pg-num{font-size:44px;line-height:1}
+.pg-author__exp span{display:block;font-size:13px;color:var(--pg-muted);line-height:1.35;margin-top:6px}
+.pg-author__text{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.pg-author__text p{font-size:17.5px;color:#e3d4bd}
+.pg-author__role{font-size:18px;color:var(--pg-gold-2);font-weight:600;margin-top:-10px}
+.pg-tags{display:flex;flex-wrap:wrap;gap:10px}
+.pg-tags span{padding:8px 16px;border-radius:99px;border:1px solid var(--pg-line-2);font-size:14px;font-weight:600;color:var(--pg-gold-2)}
+
+/* ---------- тариф ---------- */
+.pg-price{max-width:760px;margin:0 auto;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;background:radial-gradient(ellipse at 50% 0%,rgba(246,200,120,.28),transparent 65%),linear-gradient(180deg,rgba(255,214,150,.1),rgba(255,214,150,.03));border-color:var(--pg-line-2);box-shadow:0 40px 120px -40px rgba(233,160,70,.45)}
+.pg-price__left{display:flex;flex-direction:column;gap:16px}
+.pg-price__name{font-family:'Roboto',Arial,sans-serif;font-size:30px;font-weight:700}
+.pg-price__old{font-size:20px;color:var(--pg-muted);text-decoration:line-through}
+.pg-price__new{font-family:'Roboto',Arial,sans-serif;font-size:68px;font-weight:800;line-height:1}
+.pg-price__sale{align-self:flex-start;padding:5px 12px;border-radius:8px;background:var(--pg-btn);color:#1d1006;font-weight:800;font-size:14px}
+.pg-price__note{font-size:13px;color:var(--pg-muted)}
+.pg-price ul{display:flex;flex-direction:column;gap:12px}
+.pg-price li{display:flex;gap:12px;font-size:15.5px;line-height:1.4}
+.pg-price li svg{width:20px;height:20px;color:var(--pg-gold);margin-top:1px}
+
+/* ---------- FAQ ---------- */
+.pg-faq{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.pg-faq details{border-radius:18px}
+.pg-faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;font-size:18px;font-weight:700;cursor:pointer;list-style:none}
+.pg-faq summary::-webkit-details-marker{display:none}
+.pg-faq summary i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--pg-line-2);color:var(--pg-gold-2);transition:transform .25s;font-style:normal}
+.pg-faq summary i svg{width:16px;height:16px}
+.pg-faq details[open] summary i{transform:rotate(45deg)}
+.pg-faq details p{padding:0 26px 24px;color:var(--pg-muted);font-size:16px;max-width:760px}
+
+/* ---------- канал с промтами ---------- */
+.pg-channel{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:30px;padding:50px 56px;overflow:hidden;background:radial-gradient(ellipse at 80% 50%,rgba(246,200,120,.3),transparent 60%),linear-gradient(180deg,rgba(255,214,150,.1),rgba(255,214,150,.03));border-color:var(--pg-line-2)}
+.pg-channel__text{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.pg-channel img{width:100%;max-width:520px;margin:-30px auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+
+/* ---------- подвал ---------- */
+.pg-footer{padding:70px 0 40px;border-top:1px solid var(--pg-line);background:linear-gradient(180deg,rgba(18,10,5,.55),rgba(11,7,5,.96))}
+.pg-footer__top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--pg-line)}
+.pg-footer h4{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pg-gold);margin-bottom:16px}
+.pg-footer__col{display:flex;flex-direction:column;gap:10px;font-size:15px}
+.pg-footer__col a:hover{color:var(--pg-gold-2)}
+.pg-footer__about{color:var(--pg-muted);font-size:14.5px;max-width:340px;margin-top:16px}
+.pg-socials{display:flex;gap:10px;margin-top:6px}
+.pg-socials a{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--pg-line-2);color:var(--pg-gold-2);font-weight:800;font-size:13px;transition:background .2s}
+.pg-socials a:hover{background:rgba(233,182,92,.12)}
+.pg-socials svg{width:20px;height:20px}
+.pg-footer__bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-top:28px;font-size:13px;color:var(--pg-muted)}
+.pg-footer__legal{display:flex;flex-wrap:wrap;gap:8px 22px}
+.pg-footer__legal a{text-decoration:underline;text-decoration-color:rgba(189,168,138,.35);text-underline-offset:3px}
+.pg-footer__legal a:hover{color:var(--pg-gold-2)}
+
+/* ================= КУРСОР И АНИМАЦИИ ================= */
+
+/* курсор-линза: всё, что под кругом, показывается в негативе */
+.pg-cursor{position:fixed;left:0;top:0;z-index:2147483647;pointer-events:none;opacity:0;transition:opacity .3s}
+.pg-cursor i{display:block;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:1px solid rgba(246,213,144,.85);-webkit-backdrop-filter:invert(1) hue-rotate(180deg);backdrop-filter:invert(1) hue-rotate(180deg)}
+html.pg-cursor-on .pg-cursor{opacity:1}
+html.pg-cursor-on,html.pg-cursor-on *{cursor:none!important}
+
+/* появление при прокрутке */
+.pg-rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.pg-rv.is-in{opacity:1;transform:none}
+
+/* первый экран */
+@keyframes pgUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes pgFade{from{opacity:0}to{opacity:1}}
+@keyframes pgZoom{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
+.pg-hero .pg-eyebrow--lines{animation:pgUp 1s .1s both}
+.pg-hero__title{animation:pgUp 1.1s .2s both}
+.pg-hero__photo{animation:pgZoom 1.8s .3s both}
+.pg-hero__left{animation:pgUp 1s .55s both}
+.pg-hero__right{animation:pgUp 1s .7s both}
+.pg-hero__note{animation:pgFade 1.2s 1.2s both}
+.pg-hero__title .pg-gold{background:linear-gradient(110deg,transparent 42%,rgba(255,251,238,.95) 50%,transparent 58%) no-repeat,var(--pg-grad);background-size:250% 100%,100% 100%;background-position:150% 0,0 0;-webkit-background-clip:text;background-clip:text;animation:pgShine 7s 1.6s ease-in-out infinite}
+@keyframes pgShine{0%{background-position:150% 0,0 0}30%,100%{background-position:-50% 0,0 0}}
+.pg-hero__star{animation:pgTwinkle 3.4s ease-in-out infinite}
+@keyframes pgTwinkle{50%{transform:scale(.72) rotate(45deg);opacity:.75}}
+@keyframes pgSpin{to{transform:rotate(360deg)}}
+.pg-stat{animation:pgFloat 7s ease-in-out infinite}
+.pg-stat+.pg-stat{animation-delay:-3.5s}
+@keyframes pgFloat{50%{transform:translateY(-8px)}}
+.pg-tools span{transition:transform .3s,box-shadow .3s,background .3s}
+.pg-tools span:hover{transform:translateY(-4px);box-shadow:0 10px 30px -8px rgba(240,180,80,.6);background:linear-gradient(180deg,rgba(255,214,150,.25),rgba(255,214,150,.06))}
+
+/* блик на золотых кнопках */
+.pg-btn--gold:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:pgBtnShine 5s 2s ease-in-out infinite}
+@keyframes pgBtnShine{0%{left:-60%}28%,100%{left:130%}}
+
+/* подсветка карточек под мышью */
+.pg-card{transition:border-color .4s}
+.pg-card:hover{border-color:var(--pg-line-2)}
+.pg-card:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(246,200,120,.14),transparent 60%)}
+.pg-card:hover:after{opacity:1}
+
+/* FAQ: плавное открытие */
+@keyframes pgFaqIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.pg-faq details[open] p{animation:pgFaqIn .45s ease both}
+
+@media (max-width:960px){
+  .pg-hero__photo{animation-name:pgFade}
+}
+
+/* ================= БЛОКИ: ЦВЕТНЫЕ СЕКЦИИ, ПАНЕЛИ, ОРНАМЕНТ ================= */
+:root{
+  --pg-hero-bg:#21140b;
+  --pg-dark-ink:#1d1006;
+  --pg-wine-ink:#6b2412;
+  --pg-lattice:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23e9b65c'%3E%3Cpath d='M24 0L48 24L24 48L0 24Z'/%3E%3Cpath d='M24 12L36 24L24 36L12 24Z' stroke-width='.6'/%3E%3C/g%3E%3Ccircle cx='24' cy='24' r='1.6' fill='%23e9b65c'/%3E%3C/svg%3E");
+  --pg-strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 7h13M27 7h13' stroke='%23e9b65c'/%3E%3Cpath d='M20 2l5 5-5 5-5-5z' fill='none' stroke='%23e9b65c'/%3E%3Ccircle cx='20' cy='7' r='1.3' fill='%23e9b65c'/%3E%3C/svg%3E");
+  --pg-strip-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 7h13M27 7h13' stroke='%232a1606'/%3E%3Cpath d='M20 2l5 5-5 5-5-5z' fill='none' stroke='%232a1606'/%3E%3Ccircle cx='20' cy='7' r='1.3' fill='%232a1606'/%3E%3C/svg%3E");
+  --pg-divider:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='18' viewBox='0 0 220 18'%3E%3Cg stroke='%23e9b65c' fill='none'%3E%3Cpath d='M0 9h86M134 9h86'/%3E%3Cpath d='M92 9l6-6 6 6-6 6zM116 9l6-6 6 6-6 6z'/%3E%3C/g%3E%3Cpath d='M110 0c.5 4.5 4 8.5 9 9-5 .5-8.5 4.5-9 9-.5-4.5-4-8.5-9-9 5-.5 8.5-4.5 9-9z' fill='%23e9b65c'/%3E%3C/svg%3E");
+  --pg-star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c.7 6.4 5.6 11.3 12 12-6.4.7-11.3 5.6-12 12-.7-6.4-5.6-11.3-12-12C6.4 11.3 11.3 6.4 12 0z' fill='%23e9b65c'/%3E%3C/svg%3E");
+  --pg-sprig:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 20 12'%3E%3Cg stroke='%23e9b65c' stroke-linecap='round'%3E%3Cpath d='M19 6H7M18 1.5 9 4.5M18 10.5 9 7.5'/%3E%3C/g%3E%3Ccircle cx='3.5' cy='6' r='1.8' fill='%23e9b65c'/%3E%3C/svg%3E");
+}
+
+/* заголовки секций: орнамент под заголовком */
+.pg-title{font-size:clamp(34px,4.8vw,60px)}
+.pg-head:after{content:"";display:block;width:220px;height:18px;margin-top:4px;background:var(--pg-divider) center/contain no-repeat}
+
+/* двойная рамка у всех карточек */
+.pg-card:before{content:"";position:absolute;inset:6px;border:1px solid rgba(233,182,92,.13);border-radius:calc(var(--pg-radius) - 6px);pointer-events:none}
+
+/* цветные секции */
+.pg-sec--choco,.pg-sec--wine,.pg-sec--gold{background-repeat:repeat-x,repeat-x,no-repeat,no-repeat;background-size:40px 14px,40px 14px,100% 100%,100% 100%;background-position:center 14px,center calc(100% - 14px),0 0,0 0}
+.pg-sec--choco{background-image:var(--pg-strip),var(--pg-strip),radial-gradient(ellipse 70% 55% at 50% 0%,rgba(214,140,50,.16),transparent 70%),linear-gradient(180deg,#1c120a,#130b06)}
+.pg-sec--wine{background-image:var(--pg-strip),var(--pg-strip),radial-gradient(ellipse 80% 60% at 50% 0%,rgba(140,40,28,.55),transparent 70%),linear-gradient(180deg,#2c0c09,#190605)}
+.pg-sec--gold{color:var(--pg-dark-ink);background-image:var(--pg-strip-dark),var(--pg-strip-dark),radial-gradient(ellipse 70% 60% at 50% 0%,rgba(255,240,200,.55),transparent 70%),linear-gradient(180deg,#f2cd84,#dda24c 55%,#bb7a2c)}
+.pg-sec--choco:before,.pg-sec--wine:before,.pg-sec--gold:before,.pg-hero__panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:var(--pg-lattice) center/48px 48px fixed;opacity:.06;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 20%,transparent 85%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 20%,transparent 85%)}
+.pg-sec--gold:before{filter:brightness(0);opacity:.1}
+
+/* тёмный текст на золоте */
+.pg-sec--gold .pg-title,.pg-panel--gold .pg-title{color:var(--pg-dark-ink)}
+.pg-sec--gold .pg-head .pg-gold,.pg-panel--gold .pg-gold,.pg-marquee .pg-gold{background:none;-webkit-text-fill-color:currentColor;color:var(--pg-wine-ink)}
+.pg-sec--gold .pg-head .pg-eyebrow,.pg-panel--gold .pg-eyebrow{color:#3a1d08}
+.pg-sec--gold .pg-eyebrow--lines:before,.pg-sec--gold .pg-eyebrow--lines:after{background:linear-gradient(90deg,transparent,#3a1d08)}
+.pg-sec--gold .pg-head .pg-lead,.pg-panel--gold .pg-lead{color:#3d2410}
+.pg-sec--gold .pg-head:after,.pg-panel--gold .pg-head:after{filter:brightness(0);opacity:.7}
+.pg-sec--gold .pg-card{color:var(--pg-text);background:linear-gradient(180deg,rgba(28,15,6,.95),rgba(16,9,4,.97));border-color:rgba(28,15,6,.6)}
+.pg-sec--gold .pg-case--total{background:radial-gradient(ellipse at 30% 0%,rgba(246,200,120,.25),transparent 70%),#140a04}
+.pg-panel--gold .pg-btn--gold{background:var(--pg-dark-ink);color:var(--pg-gold-2);box-shadow:0 12px 30px -12px rgba(0,0,0,.6)}
+.pg-panel--gold .pg-btn--gold i{background:var(--pg-btn);color:var(--pg-dark-ink)}
+
+/* панель с вогнутыми углами и звёздами по углам */
+.pg-panel{--r:30px;--panel-bg:linear-gradient(180deg,#1c120a,#130b06);position:relative;isolation:isolate}
+.pg-panel:before{content:"";position:absolute;inset:0;z-index:-1;background:var(--panel-bg);
+  -webkit-mask:radial-gradient(circle var(--r) at 0 0,#0000 98%,#000) top left/51% 51% no-repeat,radial-gradient(circle var(--r) at 100% 0,#0000 98%,#000) top right/51% 51% no-repeat,radial-gradient(circle var(--r) at 0 100%,#0000 98%,#000) bottom left/51% 51% no-repeat,radial-gradient(circle var(--r) at 100% 100%,#0000 98%,#000) bottom right/51% 51% no-repeat;
+  mask:radial-gradient(circle var(--r) at 0 0,#0000 98%,#000) top left/51% 51% no-repeat,radial-gradient(circle var(--r) at 100% 0,#0000 98%,#000) top right/51% 51% no-repeat,radial-gradient(circle var(--r) at 0 100%,#0000 98%,#000) bottom left/51% 51% no-repeat,radial-gradient(circle var(--r) at 100% 100%,#0000 98%,#000) bottom right/51% 51% no-repeat}
+.pg-panel:after{content:"";position:absolute;inset:-11px;pointer-events:none;background:var(--pg-star) 0 0/22px no-repeat,var(--pg-star) 100% 0/22px no-repeat,var(--pg-star) 0 100%/22px no-repeat,var(--pg-star) 100% 100%/22px no-repeat}
+.pg-panel--gold{--panel-bg:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(255,240,200,.55),transparent 70%),linear-gradient(135deg,#f6d590,#e2ac55 55%,#b8772a);color:var(--pg-dark-ink)}
+.pg-channel{overflow:visible;background:none;border:0}
+.pg-channel img{filter:drop-shadow(0 30px 40px rgba(60,25,5,.55))}
+
+/* первый экран: панель с выступом и кнопкой «вниз» */
+.pg-hero__panel{position:relative;min-height:690px;padding:42px 0 64px;overflow:hidden;border-bottom:1px solid rgba(233,182,92,.35);background:radial-gradient(ellipse 55% 60% at 52% 62%,rgba(214,140,50,.38),transparent 70%),radial-gradient(ellipse 40% 50% at 10% 20%,rgba(160,90,30,.2),transparent 70%),var(--pg-hero-bg)}
+.pg-hero__panel:before{opacity:.07}
+.pg-hero__tab{position:relative;z-index:4;max-width:1192px;height:34px;margin:-1px auto 0;background:var(--pg-hero-bg);border-radius:0 0 30px 30px;box-shadow:0 1px 0 rgba(233,182,92,.35),1px 0 0 rgba(233,182,92,.35),-1px 0 0 rgba(233,182,92,.35)}
+.pg-hero__tab:before,.pg-hero__tab:after{content:"";position:absolute;top:0;width:30px;height:30px}
+.pg-hero__tab:before{right:100%;background:radial-gradient(circle at 0 100%,transparent 29px,rgba(233,182,92,.35) 29.5px,rgba(233,182,92,.35) 30px,var(--pg-hero-bg) 30.5px)}
+.pg-hero__tab:after{left:100%;background:radial-gradient(circle at 100% 100%,transparent 29px,rgba(233,182,92,.35) 29.5px,rgba(233,182,92,.35) 30px,var(--pg-hero-bg) 30.5px)}
+.pg-hero__down{position:absolute;left:50%;bottom:-26px;display:grid;place-items:center;width:56px;height:56px;margin-left:-28px;border-radius:50%;background:var(--pg-hero-bg);color:var(--pg-gold-2);box-shadow:0 0 0 1px rgba(233,182,92,.35)}
+.pg-hero__down svg{width:22px;height:22px;animation:pgBounce 2.2s ease-in-out infinite}
+@keyframes pgBounce{50%{transform:translateY(4px)}}
+
+/* преимущества под первым экраном */
+.pg-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin:72px 0 80px;text-align:center;animation:pgUp 1s .85s both}
+.pg-feat{display:flex;flex-direction:column;align-items:center;gap:12px}
+.pg-feat__ico{display:flex;align-items:center;gap:10px;color:var(--pg-gold-2)}
+.pg-feat__ico:before,.pg-feat__ico:after{content:"";width:20px;height:12px;background:var(--pg-sprig) center/contain no-repeat}
+.pg-feat__ico:before{transform:scaleX(-1)}
+.pg-feat__ico svg{width:28px;height:28px}
+.pg-feat h3{font-size:17px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pg-gold-2)}
+.pg-feat p{font-size:14.5px;color:var(--pg-muted);max-width:250px}
+
+/* золотая бегущая строка */
+.pg-marquee{padding:20px 0;border:0;background:radial-gradient(ellipse 50% 100% at 50% 50%,rgba(255,240,200,.45),transparent 70%),linear-gradient(180deg,#f2cd84,#dca24c 55%,#b8772a);box-shadow:0 0 70px -10px rgba(233,160,70,.45)}
+.pg-marquee__track>span{font-size:46px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--pg-dark-ink)}
+.pg-marquee__track em{color:var(--pg-wine-ink)}
+
+@media (max-width:960px){
+  .pg-hero__tab{max-width:calc(100% - 48px)}
+  .pg-feats{grid-template-columns:1fr 1fr;gap:40px 20px;margin:64px 0}
+  .pg-channel{padding:40px 28px 0}
+}
+@media (max-width:600px){
+  .pg-hero__tab{max-width:calc(100% - 32px);height:26px}
+  .pg-feats{grid-template-columns:1fr;gap:34px}
+  .pg-panel{--r:22px}
+  .pg-head:after{width:170px}
+}
+
+/* ================= АДАПТИВ ================= */
+@media (max-width:1180px){
+  .pg-nav{gap:18px;font-size:12px}
+  .pg-logo__sub{display:none}
+  .pg-hero__grid{grid-template-columns:330px 1fr 350px}
+  .pg-hero__note{display:none}
+  .pg-stat__num{font-size:21px}
+  .pg-skills{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:960px){
+  .pg-section{padding:80px 0}
+  .pg-head{margin-bottom:40px}
+  .pg-header .pg-wrap{height:64px}
+  .pg-header-space{height:64px}
+  .pg-logo__name{font-size:21px}
+  .pg-header .pg-btn{display:none}
+  .pg-burger{display:grid;place-items:center;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1px solid var(--pg-line-2);color:var(--pg-gold-2);cursor:pointer}
+  .pg-burger svg{width:22px;height:22px}
+  .pg-nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;padding:10px 24px 24px;background:rgba(11,7,5,.97);border-bottom:1px solid var(--pg-line);font-size:15px}
+  .pg-nav a{padding:14px 0;border-bottom:1px solid rgba(233,182,92,.1)}
+  .pg-burger-toggle:checked~.pg-nav{display:flex}
+
+  .pg-hero__panel{padding-top:28px}
+  .pg-hero__grid{grid-template-columns:1fr;gap:28px;margin-top:0}
+  .pg-hero__photo{position:relative;top:auto;bottom:auto;left:auto;transform:none;order:-1;width:auto;height:min(92vw,520px);margin:0 -24px -40px;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 70%,transparent)}
+.pg-hero__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+  .pg-hero__author{display:block;order:-1;justify-self:center;margin:-20px 0 0}
+  .pg-hero__right{grid-column:auto}
+  .pg-hero__btns{max-width:none}
+  .pg-hero__btns .pg-btn{width:100%}
+
+  .pg-benefits,.pg-aud{grid-template-columns:1fr}
+  .pg-course,.pg-author,.pg-club{grid-template-columns:1fr;gap:40px}
+  .pg-results{grid-template-columns:1fr 1fr}
+  .pg-case--total{grid-column:1/-1}
+  .pg-cta-line{flex-direction:column;align-items:flex-start;padding:28px}
+  .pg-author__photo{max-width:440px}
+  .pg-author__exp{right:-10px}
+  .pg-price{grid-template-columns:1fr;padding:36px 28px;gap:30px}
+  .pg-channel{grid-template-columns:1fr;padding:40px 28px 0}
+  .pg-channel img{margin:0 auto}
+  .pg-footer__top{grid-template-columns:1fr 1fr}
+  .pg-footer__top>div:first-child{grid-column:1/-1}
+}
+@media (max-width:600px){
+  .pg{font-size:15px}
+  .pg-wrap{padding:0 16px}
+  .pg-section{padding:64px 0}
+  .pg-lead{font-size:16px}
+  .pg-eyebrow{font-size:11px;letter-spacing:.22em}
+  .pg-eyebrow--lines:before,.pg-eyebrow--lines:after{width:28px}
+  .pg-hero__photo{margin:0 -16px -40px}
+  .pg-hero__lead{font-size:18px}
+  .pg-hero__stats{grid-template-columns:1fr 1fr;gap:10px}
+  .pg-stat{padding:14px}
+  .pg-stat__top svg{display:none}
+  .pg-tools{gap:6px}
+  .pg-tools span{width:44px;height:44px;border-radius:12px}
+  .pg-tools svg{width:20px;height:20px}
+  .pg-steps{grid-template-columns:1fr 1fr;gap:10px}
+  .pg-course__big .pg-num{font-size:110px}
+  .pg-results,.pg-skills,.pg-club__list{grid-template-columns:1fr}
+  .pg-case__row .pg-num{font-size:38px}
+  .pg-club__main{padding:30px}
+  .pg-club__main .pg-num{font-size:90px}
+  .pg-marquee__track span{font-size:22px}
+  .pg-author__exp{right:10px;bottom:16px;padding:14px 16px}
+  .pg-price__new{font-size:54px}
+  .pg-faq summary{font-size:16px;padding:18px 18px}
+  .pg-faq details p{padding:0 18px 20px;font-size:15px}
+  .pg-footer__top{grid-template-columns:1fr}
+  .pg-btn{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pg-marquee__track,.pg-badge:before,.pg-stat,.pg-btn--gold:after,.pg-hero__star,.pg-hero__title .pg-gold{animation:none}
+  .pg-hero *,.pg-feats,.pg-hero__down svg{animation:none!important}
+  html{scroll-behavior:auto}
+}
+.pg-sec--choco,.pg-sec--wine,.pg-sec--gold,.pg-hero__panel{background-attachment:scroll,scroll,fixed,fixed}
+.pg-hero__panel{background-attachment:fixed}
+@media (max-width:960px){.pg-hero__panel{min-height:0}}
+
+/* ===== неподвижный тёмный фон с орнаментом под всей страницей ===== */
+html,body,.t-body{background:#120b07}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23e9b65c' stroke-opacity='.11'%3E%3Cpath d='M24 0L48 24L24 48L0 24Z'/%3E%3Cpath d='M24 12L36 24L24 36L12 24Z' stroke-width='.6'/%3E%3C/g%3E%3Ccircle cx='24' cy='24' r='1.6' fill='%23e9b65c' fill-opacity='.18'/%3E%3C/svg%3E") center/56px 56px,radial-gradient(ellipse 80% 60% at 50% 30%,rgba(120,70,25,.35),transparent 75%),#120b07}
+body:before{opacity:1}
+.pg-bgpat{display:none}
+/* узор теперь общий и неподвижный: убираем собственные узоры секций */
+.pg-hero__panel:before,.pg-sec--choco:before{display:none}
+.pg-hero__panel{background:radial-gradient(ellipse 45% 55% at 50% 62%,rgba(214,140,50,.32),transparent 70%)!important}
+.pg-sec--choco{background-image:var(--pg-strip),var(--pg-strip),none,linear-gradient(rgba(28,18,10,.55),rgba(28,18,10,.55))!important;background-attachment:scroll!important}
+.pg-hero__tab,.pg-hero__tab:before,.pg-hero__tab:after,.pg-hero__down{--pg-hero-bg:#1c1109}
+
+/* граница первого экрана: одна сплошная линия, кнопка «вниз» на линии */
+.pg-hero__panel{border-bottom:1px solid rgba(233,182,92,.55)!important}
+.pg-hero__tab{height:0!important;margin:0 auto!important;max-width:none!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+.pg-hero__tab:before,.pg-hero__tab:after{display:none!important}
+.pg-hero__down{bottom:auto!important;top:-28px!important;background:#1c1109!important;box-shadow:0 0 0 1px rgba(233,182,92,.55)!important}
+
+/* попап оплаты Tilda (T868) — в тёмно-золотом стиле */
+.t-popup{background:rgba(8,5,3,.85)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.t868 .t-popup__container{background:linear-gradient(180deg,#2a190d,#140c07)!important;border:1px solid rgba(233,182,92,.45);border-radius:22px;padding:56px 22px 22px!important;box-shadow:0 40px 120px -30px rgba(233,160,70,.45)}
+.t868 .t868__code-wrap{border-radius:14px;overflow:hidden}
+.t868 .t-popup__close svg g{stroke:#f6d590!important}
+</style>
+
+<!-- ===== 01-header.html ===== -->
+<!-- ПОМОГУСИИ · ШАПКА (меню). Пункты меню — ссылки на разделы страницы (#program, #faq и т.д.). -->
+<header class="pg pg-header">
+  <div class="pg-wrap">
+    <a class="pg-logo" href="#top">
+      <span class="pg-logo__name pg-gold">ПОМОГУСИИ</span>
+      <span class="pg-logo__sub">Клуб по нейросетям<br>от Льва Кудрина</span>
+    </a>
+
+    <input type="checkbox" id="pg-burger" class="pg-burger-toggle">
+    <label for="pg-burger" class="pg-burger" aria-label="Меню">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </label>
+
+    <nav class="pg-nav">
+      <a href="#about">О клубе</a>
+      <a href="#program">Программа</a>
+      <a href="#results">Результаты</a>
+      <a href="#tariff">Тариф</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <a class="pg-btn pg-btn--ghost pg-btn--sm" href="#popup:tarif1">Вступить в клуб
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+    </a>
+  </div>
+</header>
+<div class="pg-header-space"></div>
+<script>
+  // закрывает мобильное меню после нажатия на пункт
+  document.querySelectorAll('.pg-nav a').forEach(function (a) {
+    a.addEventListener('click', function () { document.getElementById('pg-burger').checked = false; });
+  });
+</script>
+
+<!-- ===== 02-hero.html ===== -->
+<!-- ПОМОГУСИИ · ПЕРВЫЙ ЭКРАН
+     Фото автора: замените ссылку в src="..." у <img> (загрузите фото в Tilda и вставьте его адрес).
+     Кнопка «Вступить в клуб» открывает попап оплаты #popup:tarif1. -->
+<section class="pg pg-hero" id="top">
+ <div class="pg-hero__panel">
+  <div class="pg-wrap pg-hero__inner">
+    <p class="pg-eyebrow pg-eyebrow--lines">Нейросети: лёгкое обучение</p>
+    <h1 class="pg-hero__title"><span class="pg-gold">ПОМОГУСИИ</span>
+      <svg class="pg-hero__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.7 6.4 5.6 11.3 12 12-6.4.7-11.3 5.6-12 12-.7-6.4-5.6-11.3-12-12C6.4 11.3 11.3 6.4 12 0z"/></svg>
+    </h1>
+
+    <div class="pg-hand pg-hero__note pg-hero__note--l">Больше,<br>чем просто<br>уроки
+      <svg viewBox="0 0 46 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4c4 16 16 28 36 30"/><path d="M32 28l8 6-9 3"/></svg>
+    </div>
+    <div class="pg-hand pg-hero__note pg-hero__note--r">Новые<br>возможности<br>для тебя.
+      <svg viewBox="0 0 46 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4c4 16 16 28 36 30"/><path d="M32 28l8 6-9 3"/></svg>
+    </div>
+
+    <div class="pg-hero__grid">
+      <div class="pg-hero__left">
+        <p class="pg-hero__lead">Стань <b>Нейрокреатором</b> — это проще, чем кажется! Освой нейросети, начни создавать и зарабатывать уже сегодня.</p>
+        <p class="pg-hero__sub">Уроки, практика, поддержка и сообщество — в одном закрытом клубе.</p>
+        <div class="pg-hero__btns">
+          <a class="pg-btn pg-btn--gold" href="#popup:tarif1">Вступить в клуб
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+          </a>
+          <a class="pg-btn pg-btn--ghost" href="#program">Смотреть программу
+            <i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.5v9l7.5-4.5z"/></svg></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="pg-hero__photo"><img src="https://static.tildacdn.com/tild3036-3233-4938-b962-326239663039/__001.jpg" alt="Лев Кудрин"></div>
+      <div class="pg-hero__author"><b>Лев Кудрин</b><span>Эксперт по визуальному контенту и нейросетям</span></div>
+
+      <div class="pg-hero__right">
+        <div class="pg-hero__stats">
+          <div class="pg-card pg-stat">
+            <div class="pg-stat__top">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>
+              <div class="pg-stat__num pg-gold">40+<small>уроков</small></div>
+            </div>
+            <p>Практические видео, задания и регулярные обновления</p>
+          </div>
+          <div class="pg-card pg-stat">
+            <div class="pg-stat__top">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              <div class="pg-stat__num pg-gold">62 млн<small>просмотров</small></div>
+            </div>
+            <p>Собрали мои ИИ-ролики всего за 2 недели</p>
+          </div>
+        </div>
+        <p class="pg-eyebrow">Изучаем актуальные нейросети</p>
+        <div class="pg-tools">
+          <span title="ChatGPT"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 12h.01M12 12h.01M16 12h.01" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <span title="Kling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor"/></svg></span>
+          <span title="Sora"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14H4z"/><path d="M14 6l6 11h-6z"/><path d="M3 20.5c3 1 15 1 18 0"/></svg></span>
+          <span title="Midjourney"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4-4L6 21"/></svg></span>
+          <span title="ElevenLabs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 10v4M7 6v12M11 3v18M15 8v8M19 5v14"/></svg></span>
+          <span title="И другие"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span>
+        </div>
+        <p class="pg-tools__cap">ChatGPT, Kling, Sora, Midjourney, ElevenLabs и др.</p>
+      </div>
+    </div>
+  </div>
+ </div>
+ <div class="pg-hero__tab">
+   <a class="pg-hero__down" href="#about" aria-label="Листать вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 5 5 5-5"/><path d="m7 13 5 5 5-5"/></svg></a>
+ </div>
+
+  <div class="pg-wrap">
+    <div class="pg-feats">
+      <div class="pg-feat">
+        <span class="pg-feat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span>
+        <h3>Практические навыки</h3>
+        <p>Сразу применяй знания в реальных задачах</p>
+      </div>
+      <div class="pg-feat">
+        <span class="pg-feat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3>Поддержка</h3>
+        <p>Задавай вопросы и получай обратную связь</p>
+      </div>
+      <div class="pg-feat">
+        <span class="pg-feat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 20v-5M12 20V10M18 20V4"/></svg></span>
+        <h3>Актуальные инструменты</h3>
+        <p>Разбираем топовые нейросети и кейсы их применения</p>
+      </div>
+      <div class="pg-feat">
+        <span class="pg-feat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 4 11h12l4-11-6 5-4-7-4 7z"/><path d="M5 20h14"/></svg></span>
+        <h3>Монетизация</h3>
+        <p>Превращай навыки в заказы, клиентов и доход</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03-marquee.html ===== -->
+<!-- ПОМОГУСИИ · БЕГУЩАЯ СТРОКА. Текст повторяется дважды — меняйте обе строки одинаково. -->
+<div class="pg pg-marquee" aria-hidden="true">
+  <div class="pg-marquee__track">
+    <span>Дизайн<em>✦</em>Фриланс<em>✦</em>Монтаж<em>✦</em><span class="pg-gold">Искусственный интеллект</span><em>✦</em>Видеосъёмка<em>✦</em>Визуал<em>✦</em>Продажи<em>✦</em>Лёгкость<em>✦</em></span>
+    <span>Дизайн<em>✦</em>Фриланс<em>✦</em>Монтаж<em>✦</em><span class="pg-gold">Искусственный интеллект</span><em>✦</em>Видеосъёмка<em>✦</em>Визуал<em>✦</em>Продажи<em>✦</em>Лёгкость<em>✦</em></span>
+  </div>
+</div>
+
+<!-- ===== 04-benefits.html ===== -->
+<!-- ПОМОГУСИИ · ЧТО ЭТО ПРИНОСИТ -->
+<section class="pg pg-section pg-glow" id="about">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">О клубе</p>
+      <h2 class="pg-title">Каждую минуту видео, созданные <span class="pg-gold">искусственным интеллектом</span>, собирают миллионные просмотры</h2>
+      <p class="pg-lead">Что это приносит вам?</p>
+    </div>
+
+    <div class="pg-benefits">
+      <div class="pg-card pg-benefit">
+        <span class="pg-num pg-gold">01</span>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
+        <h3>Раскрутка личного блога или бренда</h3>
+        <p>Яркий ИИ-контент выделяет вас в ленте и приводит новую аудиторию.</p>
+      </div>
+      <div class="pg-card pg-benefit">
+        <span class="pg-num pg-gold">02</span>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
+        <h3>Больше клиентов и заказчиков</h3>
+        <p>Создавайте визуал для себя и для других — это востребованная услуга.</p>
+      </div>
+      <div class="pg-card pg-benefit">
+        <span class="pg-num pg-gold">03</span>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></svg></span>
+        <h3>Лояльность и рост продаж</h3>
+        <p>Цепляющие ролики вызывают доверие и превращают зрителей в покупателей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05-course.html ===== -->
+<!-- ПОМОГУСИИ · КУРС «12 УРОКОВ: ВИРУСНЫЙ МУЛЬТФИЛЬМ» -->
+<section class="pg pg-section pg-sec--choco">
+  <div class="pg-wrap pg-course">
+    <div class="pg-course__left">
+      <p class="pg-eyebrow">Внутри клуба</p>
+      <div class="pg-course__big">
+        <span class="pg-num pg-gold">12</span>
+        <span>уроков для создания<br>вирусного мультфильма</span>
+      </div>
+      <h2 class="pg-title">Создавайте уникальные <span class="pg-gold">мультфильмы</span> с помощью ИИ</h2>
+      <p class="pg-lead">Вы научитесь создавать ИИ-мультфильмы с нуля — от идеи до готового видео. Практика, поддержка и результат!</p>
+      <a class="pg-btn pg-btn--gold" href="#popup:tarif1">Хочу создать мультфильм
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+      </a>
+    </div>
+
+    <div class="pg-steps">
+      <div class="pg-card pg-step"><small>01</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M15 14c.2-1 .7-1.7 1.5-2.5A4.6 4.6 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/></svg></span>
+        <h4>Идея</h4></div>
+      <div class="pg-card pg-step"><small>02</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+        <h4>Сценарий</h4></div>
+      <div class="pg-card pg-step"><small>03</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span>
+        <h4>Промт</h4></div>
+      <div class="pg-card pg-step"><small>04</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01" stroke-width="2.4"/></svg></span>
+        <h4>Персонажи</h4></div>
+      <div class="pg-card pg-step"><small>05</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 3v18M16 3v18M3 12h18M3 7.5h5M3 16.5h5M16 7.5h5M16 16.5h5"/></svg></span>
+        <h4>Анимация</h4></div>
+      <div class="pg-card pg-step"><small>06</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></svg></span>
+        <h4>Озвучка</h4></div>
+      <div class="pg-card pg-step"><small>07</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+        <h4>Музыка</h4></div>
+      <div class="pg-card pg-step"><small>08</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></span>
+        <h4>Монтаж</h4></div>
+      <div class="pg-card pg-step"><small>09</small>
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>
+        <h4>Публикация</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06-results.html ===== -->
+<!-- ПОМОГУСИИ · РЕЗУЛЬТАТЫ -->
+<section class="pg pg-section pg-sec--gold" id="results">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">Результаты</p>
+      <h2 class="pg-title">Мои результаты <span class="pg-gold">за 2 недели</span></h2>
+      <p class="pg-lead">Ролики, созданные с помощью нейросетей — те же инструменты, которые вы освоите в клубе.</p>
+    </div>
+
+    <div class="pg-results">
+      <div class="pg-card pg-case">
+        <span class="pg-case__tag">Аккаунт №1</span>
+        <div class="pg-case__row"><span class="pg-num pg-gold">21 тыс.</span><span>подписчиков</span></div>
+        <div class="pg-case__row"><span class="pg-num pg-gold">50 млн</span><span>просмотров</span></div>
+      </div>
+      <div class="pg-card pg-case">
+        <span class="pg-case__tag">Аккаунт №2</span>
+        <div class="pg-case__row"><span class="pg-num pg-gold">30 тыс.</span><span>подписчиков</span></div>
+        <div class="pg-case__row"><span class="pg-num pg-gold">12 млн</span><span>просмотров</span></div>
+      </div>
+      <div class="pg-card pg-case pg-case--total">
+        <span class="pg-case__tag">Итого</span>
+        <div class="pg-case__row"><span class="pg-num pg-gold">51 тысяча</span><span>подписчиков</span></div>
+        <div class="pg-case__row"><span class="pg-num pg-gold">62 миллиона</span><span>просмотров</span></div>
+      </div>
+    </div>
+
+    <div class="pg-card pg-cta-line">
+      <div>
+        <h3>Я смог — <span class="pg-gold">сможешь и ты!</span></h3>
+        <p>Не упусти свой шанс. Прямо сейчас пройди обучение по нейросетям и мультфильмам.</p>
+      </div>
+      <a class="pg-btn pg-btn--gold" href="#popup:tarif1">Зайти в закрытый клуб
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07-skills.html ===== -->
+<!-- ПОМОГУСИИ · ЧЕМУ ЕЩЁ НАУЧИТЕСЬ -->
+<section class="pg pg-section">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">Навыки</p>
+      <h2 class="pg-title">Помимо этого, в закрытом клубе <span class="pg-gold">вы научитесь:</span></h2>
+    </div>
+
+    <div class="pg-skills">
+      <div class="pg-card pg-skill"><span class="pg-num pg-gold">01</span><p>Создавать вирусный контент с помощью нейросетей</p></div>
+      <div class="pg-card pg-skill"><span class="pg-num pg-gold">02</span><p>Делать за минуты фото, видео и Reels, на которые раньше уходили дни</p></div>
+      <div class="pg-card pg-skill"><span class="pg-num pg-gold">03</span><p>Получать миллионы просмотров с одного правильного промта</p></div>
+      <div class="pg-card pg-skill"><span class="pg-num pg-gold">04</span><p>Монетизировать свои навыки и работать с клиентами</p></div>
+    </div>
+
+    <p class="pg-quote">Пока другие работают вручную — <span class="pg-gold">автоматизируйте всё с помощью ИИ</span></p>
+  </div>
+</section>
+
+<!-- ===== 08-audience.html ===== -->
+<!-- ПОМОГУСИИ · КОМУ ПОДХОДИТ -->
+<section class="pg pg-section pg-sec--wine">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">Для кого</p>
+      <h2 class="pg-title">Кому подходит <span class="pg-gold">обучение?</span></h2>
+    </div>
+
+    <div class="pg-aud">
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10M12 21v-9"/><path d="M12 12C12 8 9 6 5 6c0 4 3 6 7 6zM12 12c0-3 2-5 6-5 0 3-2 5-6 5z"/></svg></span>
+        <p><b>Новичкам</b>, кто хочет зайти в мир нейросетей с нуля и создавать визуалы без сложных программ</p>
+      </div>
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01" stroke-width="2.4"/></svg></span>
+        <p><b>Блогерам</b>, которые хотят вести контент в уникальном стиле</p>
+      </div>
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15 8.5h-4a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4H9M12 6v2.5M12 16.5V19"/></svg></span>
+        <p><b>Тем, кто хочет монетизировать</b> нейроконтент и превратить хобби в профессию будущего</p>
+      </div>
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01" stroke-width="2.4"/></svg></span>
+        <p><b>Тем, кто хочет создавать</b> реалистичные фото и фильмы прямо с телефона</p>
+      </div>
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+        <p><b>Предпринимателям</b>, которые продают товары и услуги</p>
+      </div>
+      <div class="pg-card">
+        <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18zM2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></span>
+        <p><b>Дизайнерам и маркетологам</b>, ищущим новое вдохновение и формат творчества</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 09-program.html ===== -->
+<!-- ПОМОГУСИИ · ПРОГРАММА КЛУБА -->
+<section class="pg pg-section" id="program">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">Программа</p>
+      <h2 class="pg-title">В закрытом клубе <span class="pg-gold">уже есть:</span></h2>
+    </div>
+
+    <div class="pg-club">
+      <div class="pg-card pg-club__main">
+        <span class="pg-num pg-gold">40+</span>
+        <div>
+          <h3>практических уроков</h3>
+          <p>Пошаговая система — от новичка до уверенного пользователя нейросетей.</p>
+        </div>
+      </div>
+
+      <div class="pg-club__list">
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4-4L6 21"/></svg></span>
+          Создание фото, видео и мультфильмов</div>
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></svg></span>
+          Озвучка и клон голоса</div>
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+          Создание музыки и песен</div>
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></span>
+          Автоматизация создания контента</div>
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
+          Продвижение через Reels и Stories</div>
+        <div class="pg-card">
+          <span class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
+          Постоянное обновление материалов</div>
+      </div>
+    </div>
+
+    <div class="pg-center">
+      <a class="pg-btn pg-btn--gold" href="#popup:tarif1">Вступить в закрытый клуб
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10-author.html ===== -->
+<!-- ПОМОГУСИИ · ОБ АВТОРЕ. Фото меняется в src="..." у <img>. -->
+<section class="pg pg-section pg-sec--wine">
+  <div class="pg-wrap pg-author">
+    <div class="pg-author__photo">
+      <img src="https://static.tildacdn.com/tild6331-3430-4734-a665-333665373064/IMG_3602.jpg" alt="Лев Кудрин" loading="lazy">
+      <div class="pg-card pg-author__exp"><span class="pg-num pg-gold">16+</span><span>лет в дизайне<br>и видеомонтаже</span></div>
+    </div>
+
+    <div class="pg-author__text">
+      <p class="pg-eyebrow">Обо мне</p>
+      <h2 class="pg-title">Лев <span class="pg-gold">Кудрин</span></h2>
+      <p class="pg-author__role">Эксперт по визуальному контенту и нейросетям</p>
+      <p>Более 16 лет в дизайне и видеомонтаже. Профессионально занимался видеосъёмкой, работал с крупными блогерами и медийными личностями в Москве.</p>
+      <p>Объединяю сильный визуальный вкус, продакшн-опыт и современные AI-инструменты, чтобы обучать людей создавать контент быстрее, качественнее и на уровне профессионального рынка.</p>
+      <div class="pg-tags"><span>Дизайн</span><span>Видеосъёмка</span><span>Монтаж</span><span>Нейросети</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11-tariff.html ===== -->
+<!-- ПОМОГУСИИ · ТАРИФ. Цены меняются прямо в тексте ниже. Кнопка открывает попап оплаты #popup:tarif1. -->
+<section class="pg pg-section" id="tariff">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <span class="pg-badge">Места ограничены</span>
+      <h2 class="pg-title">Вступайте в клуб <span class="pg-gold">по специальной цене</span></h2>
+    </div>
+
+    <div class="pg-card pg-price">
+      <div class="pg-price__left">
+        <p class="pg-price__name">Доступ на 1 месяц</p>
+        <span class="pg-price__sale">−60%</span>
+        <p class="pg-price__old">5 000 ₽</p>
+        <p class="pg-price__new pg-gold">1 990 ₽</p>
+        <a class="pg-btn pg-btn--gold" href="#popup:tarif1">Получить доступ
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></i>
+        </a>
+        <p class="pg-price__note">Доступ открывается сразу после оплаты. Оплатить можно из любой страны.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>40+ практических уроков</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>12 уроков по созданию вирусного мультфильма</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Фото, видео, озвучка, музыка и клон голоса</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Автоматизация контента</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Продвижение через Reels и Stories</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Поддержка и обратная связь</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Постоянное обновление материалов</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12-faq.html ===== -->
+<!-- ПОМОГУСИИ · ВОПРОСЫ И ОТВЕТЫ. Чтобы добавить вопрос — скопируйте целиком блок от <details> до </details>. Одновременно открыт только один вопрос. -->
+<section class="pg pg-section pg-sec--choco" id="faq">
+  <div class="pg-wrap">
+    <div class="pg-head">
+      <p class="pg-eyebrow pg-eyebrow--lines">FAQ</p>
+      <h2 class="pg-title">Частые <span class="pg-gold">вопросы</span></h2>
+    </div>
+
+    <div class="pg-faq">
+      <details class="pg-card" name="pg-faq">
+        <summary>Когда начнётся обучение?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Обучение начинается сразу после оплаты. Все уроки становятся доступны сразу, и вы сможете проходить их в удобное время и в своём темпе.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Где будут проходить уроки?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Уроки расположены на платформе GetCourse, а также в Telegram-канале. Проходить обучение можно с мобильного телефона. Доступ к урокам придёт на вашу электронную почту сразу после оплаты.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Я оплатил(а), где смотреть обучение?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>После оплаты письмо с инструкцией придёт вам на почту.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Сколько длится обучение?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Вы можете проходить его в своём темпе. Главное — смотреть материалы, тренироваться и воплощать всё на практике, нарабатывая опыт в профессии.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Нужен ли ноутбук для работы с нейросетями?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Нет. Вы можете создавать фото и видео прямо в мобильном телефоне. Если есть желание и возможность, можно использовать и ноутбук.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Какой смартфон нужен для обучения?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Подойдёт любой смартфон с возможностью устанавливать приложения.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Можно ли оплатить сейчас, а начать учиться позднее?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Нет, доступ активируется после оплаты подписки и действует в течение оплаченного срока.</p>
+      </details>
+      <details class="pg-card" name="pg-faq">
+        <summary>Можно ли оплатить из-за границы?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i></summary>
+        <p>Да, оплата доступна из любой страны.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 13-channel.html ===== -->
+<!-- ПОМОГУСИИ · КАНАЛ С ПРОМТАМИ. Ссылка на канал — в href="..." у кнопки. -->
+<section class="pg pg-section">
+  <div class="pg-wrap">
+    <div class="pg-panel pg-panel--gold pg-channel">
+      <div class="pg-channel__text">
+        <p class="pg-eyebrow">Бесплатно</p>
+        <h2 class="pg-title">Канал <span class="pg-gold">с промтами</span></h2>
+        <p class="pg-lead">Переходи в канал с промтами и создавай свои изображения уже сегодня.</p>
+        <a class="pg-btn pg-btn--gold" href="https://t.me/+KxT8AOpV72dhMWRi" target="_blank" rel="noopener">Перейти в канал
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></i>
+        </a>
+      </div>
+      <img src="https://static.tildacdn.com/tild3539-6663-4935-a435-306230646637/2026-05-06-034236.png" alt="Канал с промтами в Telegram" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== 14-footer.html ===== -->
+<!-- ПОМОГУСИИ · ПОДВАЛ (контакты и юридическая информация) -->
+<footer class="pg pg-footer" id="contacts">
+  <div class="pg-wrap">
+    <div class="pg-footer__top">
+      <div>
+        <a class="pg-logo" href="#top"><span class="pg-logo__name pg-gold">ПОМОГУСИИ</span></a>
+        <p class="pg-footer__about">Закрытый клуб по нейросетям от Льва Кудрина. Следите за новостями в соцсетях и в моём Telegram-канале.</p>
+      </div>
+      <div class="pg-footer__col">
+        <h4>Контакты</h4>
+        <a href="https://t.me/levkudrin" target="_blank" rel="noopener">Telegram: @levkudrin</a>
+        <div class="pg-socials">
+          <a href="https://t.me/levkudrin" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></a>
+          <a href="https://vk.com/kuydrin" target="_blank" rel="noopener" aria-label="ВКонтакте">VK</a>
+        </div>
+      </div>
+      <div class="pg-footer__col">
+        <h4>Навигация</h4>
+        <a href="#program">Программа</a>
+        <a href="#results">Результаты</a>
+        <a href="#tariff">Тариф</a>
+        <a href="#faq">Вопросы</a>
+      </div>
+    </div>
+    <div class="pg-footer__bottom">
+      <div>ИП Кудрин Лев Романович · ИНН 343531790067 · ОГРНИП 324080000036412</div>
+      <div class="pg-footer__legal">
+        <a href="https://pomogusii.getcourse.ru/legal" target="_blank" rel="noopener">Оферта</a>
+        <a href="https://pomogusii.getcourse.ru/privacypolicy" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a href="https://pomogusii.getcourse.ru/obrab" target="_blank" rel="noopener">Согласие на обработку данных</a>
+        <a href="https://pomogusii.getcourse.ru/soglas" target="_blank" rel="noopener">Согласие на рассылку</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 15-effects.html ===== -->
+<!--
+  ПОМОГУСИИ · ЭФФЕКТЫ: курсор-круг, анимации появления, счётчики, FAQ (открыт только один вопрос).
+  Ставится ПОСЛЕДНИМ блоком страницы. Редактировать здесь ничего не нужно.
+  Если удалить этот блок — сайт продолжит работать, просто без анимаций.
+-->
+<div class="pg-cursor" aria-hidden="true"><i></i></div>
+
+<script>
+(function () {
+  if (window.__pgEffects) return;
+  window.__pgEffects = true;
+
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var mouse = { on: false };
+
+  // курсор переносим в <body>, чтобы обёртки Tilda не влияли на позиционирование
+  var cursor = document.querySelector('.pg-cursor');
+  document.body.appendChild(cursor);
+
+  /* ---------- FAQ: открыт только один вопрос ---------- */
+  document.querySelectorAll('.pg-faq').forEach(function (list) {
+    list.addEventListener('toggle', function (e) {
+      if (!e.target.open) return;
+      list.querySelectorAll('details[open]').forEach(function (d) {
+        if (d !== e.target) d.open = false;
+      });
+    }, true);
+  });
+
+  /* ---------- курсор-круг ---------- */
+  if (finePointer) {
+    document.addEventListener('mousemove', function (e) {
+      if (!mouse.on) { mouse.on = true; root.classList.add('pg-cursor-on'); }
+      cursor.style.opacity = '';
+      cursor.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+    });
+    // над формой оплаты (iframe) события мыши не доходят до страницы — прячем круг, там обычный курсор
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.tagName === 'IFRAME') cursor.style.opacity = 0;
+    });
+    document.documentElement.addEventListener('mouseleave', function () {
+      mouse.on = false; cursor.style.opacity = 0;
+    });
+    document.documentElement.addEventListener('mouseenter', function () {
+      cursor.style.opacity = '';
+    });
+  }
+
+  /* ---------- подсветка карточек под мышью ---------- */
+  document.addEventListener('pointermove', function (e) {
+    var card = e.target.closest && e.target.closest('.pg-card');
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  /* ---------- появление блоков при прокрутке ---------- */
+  var revealSel = '.pg-head, .pg-card, .pg-course__left > *, .pg-author__photo, .pg-author__text > *, .pg-quote, .pg-center, .pg-channel__text > *, .pg-channel img';
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(revealSel).forEach(function (el) {
+    if (el.closest('.pg-hero, .pg-header') || el.closest('.pg-rv')) return;
+    var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.matches(revealSel); });
+    el.style.setProperty('--d', Math.min(sibs.indexOf(el) * 0.08, 0.5) + 's');
+    el.classList.add('pg-rv');
+    io.observe(el);
+  });
+
+  /* ---------- счётчики цифр (40+, 21 тыс., 62 миллиона…) ---------- */
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      cio.unobserve(en.target);
+      var node = en.target.firstChild, m = node.nodeValue.match(/^(\s*)(\d+)([\s\S]*)$/);
+      var end = +m[2], start = performance.now(), dur = 1600;
+      (function tick(now) {
+        var k = Math.min((now - start) / dur, 1);
+        node.nodeValue = m[1] + Math.round(end * (1 - Math.pow(1 - k, 3))) + m[3];
+        if (k < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.pg-num, .pg-stat__num').forEach(function (el) {
+    var node = el.firstChild;
+    if (node && node.nodeType === 3 && /^\s*[1-9]\d*/.test(node.nodeValue)) cio.observe(el);
+  });
+})();
+</script>
+
+<div id="pg-preview-popup" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(8,5,3,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px">
+  <div class="pg-popup-box" style="position:relative;width:100%;max-width:560px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,#2a190d,#140c07);border:1px solid rgba(233,182,92,.45);border-radius:22px;padding:56px 22px 22px;box-shadow:0 40px 120px -30px rgba(233,160,70,.45)">
+    <button type="button" id="pg-preview-close" aria-label="Закрыть" style="position:absolute;top:12px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,182,92,.5);background:none;color:#f6d590;font-size:24px;line-height:1;cursor:pointer">&times;</button>
+    <div id="pg-preview-widget" style="border-radius:14px;overflow:hidden"><script id="47ba71c13b415f85f08128b4062f6260dfce9c83" src="https://pomogusii.getcourse.ru/pl/lite/widget/script?id=1598811"></script></div>
+  </div>
+</div>
+<script>
+(function () {
+  if (window.t_onReady) return; // на Tilda работает её собственный попап
+  var popup = document.getElementById('pg-preview-popup');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href$="#popup:tarif1"]');
+    if (!a) return;
+    e.preventDefault();
+    popup.style.display = 'flex';
+  });
+  popup.addEventListener('click', function (e) {
+    if (e.target === popup || e.target.id === 'pg-preview-close') popup.style.display = 'none';
+  });
+})();
+</script>
+</body>
+</html>
