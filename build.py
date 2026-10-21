@@ -42,6 +42,8 @@ HEAD = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ПомогусИИ — клуб по нейросетям Льва Кудрина</title>
 <meta name="description" content="Стань Нейрокреатором — это проще, чем кажется! Закрытый клуб по нейросетям: 40+ практических уроков, ИИ-мультфильмы, фото, видео, озвучка и монетизация.">
+<link rel="icon" type="image/svg+xml" href="logo/logo-mark.svg">
+<link rel="apple-touch-icon" href="logo/favicon-180.png">
 <style>body{margin:0;background:#0b0705}</style>
 </head>
 <body>
