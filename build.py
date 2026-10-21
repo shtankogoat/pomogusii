@@ -12,10 +12,10 @@ BLOCKS = sorted((ROOT / "tilda").glob("[0-9][0-9]-*.html"))
 # поэтому его скрипт стоит в разметке сразу, а не подгружается по клику): на Tilda ссылки #popup:tarif1
 # открывает штатный блок-попап (T868) с виджетом оплаты GetCourse.
 PREVIEW_POPUP = """
-<div id="pg-preview-popup" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(8,5,3,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px">
-  <div class="pg-popup-box" style="position:relative;width:100%;max-width:560px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,#2a190d,#140c07);border:1px solid rgba(233,182,92,.45);border-radius:22px;padding:56px 22px 22px;box-shadow:0 40px 120px -30px rgba(233,160,70,.45)">
-    <button type="button" id="pg-preview-close" aria-label="Закрыть" style="position:absolute;top:12px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,182,92,.5);background:none;color:#f6d590;font-size:24px;line-height:1;cursor:pointer">&times;</button>
-    <div id="pg-preview-widget" style="border-radius:14px;overflow:hidden"><script id="47ba71c13b415f85f08128b4062f6260dfce9c83" src="https://pomogusii.getcourse.ru/pl/lite/widget/script?id=1598811"></script></div>
+<div id="pg-preview-popup" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:16px">
+  <div style="position:relative;width:100%;max-width:560px;max-height:90vh;overflow:auto;background:#fff;border-radius:16px;padding:24px">
+    <button type="button" id="pg-preview-close" aria-label="Закрыть" style="position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer">&times;</button>
+    <div id="pg-preview-widget"><script id="47ba71c13b415f85f08128b4062f6260dfce9c83" src="https://pomogusii.getcourse.ru/pl/lite/widget/script?id=1598811"></script></div>
   </div>
 </div>
 <script>
