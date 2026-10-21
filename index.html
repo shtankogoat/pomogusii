@@ -486,11 +486,6 @@ body:before{opacity:1}
 .pg-hero__tab:before,.pg-hero__tab:after{display:none!important}
 .pg-hero__down{bottom:auto!important;top:-28px!important;background:#1c1109!important;box-shadow:0 0 0 1px rgba(233,182,92,.55)!important}
 
-/* попап оплаты Tilda (T868) — в тёмно-золотом стиле */
-.t-popup{background:rgba(8,5,3,.85)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.t868 .t-popup__container{background:linear-gradient(180deg,#2a190d,#140c07)!important;border:1px solid rgba(233,182,92,.45);border-radius:22px;padding:56px 22px 22px!important;box-shadow:0 40px 120px -30px rgba(233,160,70,.45)}
-.t868 .t868__code-wrap{border-radius:14px;overflow:hidden}
-.t868 .t-popup__close svg g{stroke:#f6d590!important}
 </style>
 
 <!-- ===== 01-header.html ===== -->
@@ -1050,15 +1045,24 @@ body:before{opacity:1}
   });
 
   /* ---------- курсор-круг ---------- */
+  function popupOpen() {
+    var p = document.getElementById('pg-preview-popup');
+    return !!(document.querySelector('.t-popup.t-popup_show') || (p && p.style.display === 'flex'));
+  }
   if (finePointer) {
     document.addEventListener('mousemove', function (e) {
-      if (!mouse.on) { mouse.on = true; root.classList.add('pg-cursor-on'); }
+      mouse.on = true;
+      // пока открыт попап оплаты — круга нет, обычный курсор; закрыли попап — круг вернулся
+      root.classList.toggle('pg-cursor-on', !popupOpen());
       cursor.style.opacity = '';
       cursor.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
     });
     // над формой оплаты (iframe) события мыши не доходят до страницы — прячем круг, там обычный курсор
     document.addEventListener('mouseover', function (e) {
       if (e.target.tagName === 'IFRAME') cursor.style.opacity = 0;
+    });
+    document.addEventListener('click', function () {
+      setTimeout(function () { root.classList.toggle('pg-cursor-on', mouse.on && !popupOpen()); }, 0);
     });
     document.documentElement.addEventListener('mouseleave', function () {
       mouse.on = false; cursor.style.opacity = 0;
